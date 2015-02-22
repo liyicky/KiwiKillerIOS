@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B7BE8F70-51FF-42FF-9C75-763EF2D4F75C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>KiwiKiller</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>21DB4B4E20EF5D7ED73A7860FA93E5B7CA80C1B5</key>
+		<string>https://github.com/liyicky/KiwiKillerIOS.git</string>
+		<key>9F6F8232F9DF3447C2F3BB1E772287ADD4EEEA06</key>
+		<string>https://github.com/liyicky/KiwiKiller.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>KiwiKiller.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>21DB4B4E20EF5D7ED73A7860FA93E5B7CA80C1B5</key>
+		<string>../..</string>
+		<key>9F6F8232F9DF3447C2F3BB1E772287ADD4EEEA06</key>
+		<string>../../../../Web/Games/KiwiKiller</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/liyicky/KiwiKillerIOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>21DB4B4E20EF5D7ED73A7860FA93E5B7CA80C1B5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>21DB4B4E20EF5D7ED73A7860FA93E5B7CA80C1B5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KiwiKiller</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9F6F8232F9DF3447C2F3BB1E772287ADD4EEEA06</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KiwiKiller</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -9,11 +9,18 @@
 #import "GameScene.h"
 
 @implementation GameScene
+{
+    SKSpriteNode *_kiwi;
+}
 
 - (id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
-        self.backgroundColor = [SKColor greenColor];
+        self.backgroundColor = [SKColor whiteColor];
+        
+        _kiwi = [SKSpriteNode spriteNodeWithImageNamed:@"kiwifrontwalkx4.gif"];
+        _kiwi.position = CGPointMake(50, 50);
+        [self addChild:_kiwi];
     }
     return self;
 }
