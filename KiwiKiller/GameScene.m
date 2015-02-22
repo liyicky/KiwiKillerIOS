@@ -52,4 +52,26 @@
     [cat runAction:seq];
 }
 
+- (void)checkCollisions
+{
+    [_backgroundLayer enumerateChildNodesWithName:@"cat" usingBlock:^(SKNode *node, BOOL *stop) {
+        SKSpriteNode *cat = (SKSpriteNode *)node;
+        if (CGRectIntersectsRect(cat.frame, _kiwi.frame)) {
+            NSLog(@"Game Over");
+        }
+        
+    }];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint positionInScene = [touch locationInNode:self];
+    SKSpriteNode *touchedNode = (SKSpriteNode *)[self nodeAtPoint:positionInScene];
+    
+    if ([[touchedNode name] isEqualToString:@"cat"]) {
+        NSLog(@"Fingered a cat");
+    }
+}
+
 @end
