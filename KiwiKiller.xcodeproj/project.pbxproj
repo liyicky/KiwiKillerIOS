@@ -285,6 +285,7 @@
 				TargetAttributes = {
 					5CDE36871A99453D0075BAD0 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 24495W6MQC;
 					};
 					5CDE36A51A99453D0075BAD0 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -564,6 +565,7 @@
 				5CDE36B21A99453D0075BAD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5CDE36B31A99453D0075BAD0 /* Build configuration list for PBXNativeTarget "KiwiKillerTests" */ = {
 			isa = XCConfigurationList;
@@ -572,6 +574,7 @@
 				5CDE36B51A99453D0075BAD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

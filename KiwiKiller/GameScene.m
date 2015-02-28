@@ -29,7 +29,7 @@
         
         
         SKAction *spawnCat = [SKAction sequence:@[[SKAction performSelector:@selector(addCat) onTarget:self],
-                                                  [SKAction waitForDuration:_multiplyer]]];
+                                                  [SKAction waitForDuration:10.0/_multiplyer]]];
         [self runAction:[SKAction repeatActionForever:spawnCat]];
 
     }
@@ -62,8 +62,8 @@
     }
     
     cat.position = [_backgroundLayer convertPoint:catScreenPosition fromNode:self];
-    cat.xScale = 0.75;
-    cat.yScale = 0.75;
+    cat.xScale = 0.50;
+    cat.yScale = 0.50;
     cat.name = @"cat";
     [_backgroundLayer addChild:cat];
     
@@ -76,8 +76,7 @@
 {
     [_backgroundLayer enumerateChildNodesWithName:@"cat" usingBlock:^(SKNode *node, BOOL *stop) {
         SKSpriteNode *cat = (SKSpriteNode *)node;
-        CGRect catFrame = CGRectInset(cat.frame, 20, 20);
-        if (CGRectIntersectsRect(catFrame, _kiwi.frame)) {
+        if (CGRectIntersectsRect(cat.frame, _kiwi.frame)) {
             [node runAction:[SKAction removeFromParent]];
         }
         
@@ -96,7 +95,7 @@
         NSLog([NSString stringWithFormat:@"%f", _multiplyer]);
         
         SKAction *spawnCat = [SKAction performSelector:@selector(addCat) onTarget:self];
-        [self runAction:[SKAction sequence:@[[SKAction waitForDuration:_multiplyer], spawnCat]]];
+        [self runAction:[SKAction sequence:@[[SKAction waitForDuration:10.0/_multiplyer], spawnCat]]];
 
     }
 }
