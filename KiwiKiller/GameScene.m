@@ -20,6 +20,7 @@
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [SKColor colorWithRed:55.0f green:25.0f blue:-16.0f alpha:1.0];
         _backgroundLayer = [SKNode node];
+        _multiplyer = 2.0;
         [self addChild:_backgroundLayer];
         
         _kiwi = [SKSpriteNode spriteNodeWithImageNamed:@"kiwifrontwalkx4.gif"];
@@ -27,14 +28,9 @@
         [_backgroundLayer addChild:_kiwi];
         
         
-        
-        
-        
-        _multiplyer = 2.0;
         SKAction *spawnCat = [SKAction sequence:@[[SKAction performSelector:@selector(addCat) onTarget:self],
                                                   [SKAction waitForDuration:_multiplyer]]];
         [self runAction:[SKAction repeatActionForever:spawnCat]];
-        
 
     }
     return self;
@@ -54,16 +50,26 @@
 - (void)addCat
 {
     SKSpriteNode *cat = [SKSpriteNode spriteNodeWithImageNamed:@"catrunx4.gif"];
-    CGPoint catScreenPosition = CGPointMake(100, self.size.height/2);
+    int randPosNeg = arc4random() % 2;
+    CGPoint catScreenPosition;
+    
+    switch (randPosNeg) {
+        case 0:
+            catScreenPosition = CGPointMake(0, self.size.height/2);
+            break;
+        case 1:
+            catScreenPosition = CGPointMake(self.size.width, self.size.height/2);
+    }
+    
     cat.position = [_backgroundLayer convertPoint:catScreenPosition fromNode:self];
-    cat.xScale = 1;
-    cat.yScale = 1;
+    cat.xScale = 0.75;
+    cat.yScale = 0.75;
     cat.name = @"cat";
     [_backgroundLayer addChild:cat];
     
-    SKAction *move = [SKAction moveTo:CGPointMake(self.size.width/2, cat.position.y) duration:4.0];
+    SKAction *move = [SKAction moveTo:CGPointMake(self.size.width/2, cat.position.y) duration:2.0];
     SKAction *seq = [SKAction sequence:@[move]];
-    [cat runAction:seq];
+    [cat runAction:[SKAction repeatActionForever:seq]];
 }
 
 - (void)checkCollisions
@@ -73,7 +79,6 @@
         CGRect catFrame = CGRectInset(cat.frame, 20, 20);
         if (CGRectIntersectsRect(catFrame, _kiwi.frame)) {
             [node runAction:[SKAction removeFromParent]];
-            NSLog(@"Game Over");
         }
         
     }];
@@ -86,7 +91,13 @@
     SKSpriteNode *touchedNode = (SKSpriteNode *)[self nodeAtPoint:positionInScene];
     
     if ([[touchedNode name] isEqualToString:@"cat"]) {
-        NSLog(@"Fingered a cat");
+        _multiplyer += 1.0;
+        [touchedNode runAction:[SKAction removeFromParent]];
+        NSLog([NSString stringWithFormat:@"%f", _multiplyer]);
+        
+        SKAction *spawnCat = [SKAction performSelector:@selector(addCat) onTarget:self];
+        [self runAction:[SKAction sequence:@[[SKAction waitForDuration:_multiplyer], spawnCat]]];
+
     }
 }
 
