@@ -12,29 +12,44 @@
 {
     SKSpriteNode *_kiwi;
     SKNode *_backgroundLayer;
+    float _multiplyer;
 }
 
 - (id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
-        self.backgroundColor = [SKColor whiteColor];
+        self.backgroundColor = [SKColor colorWithRed:55.0f green:25.0f blue:-16.0f alpha:1.0];
         _backgroundLayer = [SKNode node];
         [self addChild:_backgroundLayer];
-        
         
         _kiwi = [SKSpriteNode spriteNodeWithImageNamed:@"kiwifrontwalkx4.gif"];
         _kiwi.position = CGPointMake(self.size.width/2, self.size.height/2);
         [_backgroundLayer addChild:_kiwi];
         
-        [self addCat];
+        
+        
+        
+        
+        _multiplyer = 2.0;
+        SKAction *spawnCat = [SKAction sequence:@[[SKAction performSelector:@selector(addCat) onTarget:self],
+                                                  [SKAction waitForDuration:_multiplyer]]];
+        [self runAction:[SKAction repeatActionForever:spawnCat]];
+        
+
     }
     return self;
 }
 
 - (void)update:(NSTimeInterval)currentTime
 {
-    
+
 }
+
+- (void)didEvaluateActions
+{
+    [self checkCollisions];
+}
+
 
 - (void)addCat
 {
@@ -46,9 +61,8 @@
     cat.name = @"cat";
     [_backgroundLayer addChild:cat];
     
-    SKAction *remove = [SKAction removeFromParent];
     SKAction *move = [SKAction moveTo:CGPointMake(self.size.width/2, cat.position.y) duration:4.0];
-    SKAction *seq = [SKAction sequence:@[move, remove]];
+    SKAction *seq = [SKAction sequence:@[move]];
     [cat runAction:seq];
 }
 
@@ -56,7 +70,9 @@
 {
     [_backgroundLayer enumerateChildNodesWithName:@"cat" usingBlock:^(SKNode *node, BOOL *stop) {
         SKSpriteNode *cat = (SKSpriteNode *)node;
-        if (CGRectIntersectsRect(cat.frame, _kiwi.frame)) {
+        CGRect catFrame = CGRectInset(cat.frame, 20, 20);
+        if (CGRectIntersectsRect(catFrame, _kiwi.frame)) {
+            [node runAction:[SKAction removeFromParent]];
             NSLog(@"Game Over");
         }
         

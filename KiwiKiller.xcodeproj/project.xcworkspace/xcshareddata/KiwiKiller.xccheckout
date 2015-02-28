@@ -22,7 +22,7 @@
 		<key>21DB4B4E20EF5D7ED73A7860FA93E5B7CA80C1B5</key>
 		<string>../..</string>
 		<key>9F6F8232F9DF3447C2F3BB1E772287ADD4EEEA06</key>
-		<string>../../../../Web/Games/KiwiKiller</string>
+		<string>../../../Web/Games/KiwiKiller</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/liyicky/KiwiKillerIOS.git</string>
